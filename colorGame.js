@@ -24,7 +24,7 @@ easyBtn.addEventListener("click", function(){
 			squares[i].style.display = "none";
 		}
 	}
-	h1.style.background="#232323";
+	h1.style.background="steelblue";
 	reset.textContent="New Colors";
 });
 hardBtn.addEventListener("click", function(){
@@ -38,7 +38,7 @@ hardBtn.addEventListener("click", function(){
 		squares[i].style.background = colors[i];
 		squares[i].style.display = "block";
 	}
-	h1.style.background="#232323";
+	h1.style.background="steelblue";
 	reset.textContent="New Colors";
 });
 
@@ -51,7 +51,7 @@ reset.addEventListener("click", function(){
 		squares[i].style.background = colors[i];
 	}
 	reset.textContent="New Colors";
-	h1.style.background = "#232323";
+	h1.style.background = "steelblue";
 });
 
 colorDisplay.textContent = pickedColor;
