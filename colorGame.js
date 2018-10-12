@@ -7,18 +7,32 @@ var colors = [
 	"rgb(0, 0, 255)"
 ];
 var squares = document.querySelectorAll(".square");
-var pickedColor=colors[3];
+var pickedColor=pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 colorDisplay.textContent = pickedColor;
+
+var messageDisplay = document.querySelector("#message");
 for(var i = 0; i<squares.length; i++){
 	squares[i].style.background = colors[i];
 	squares[i].addEventListener("click", function(){
 		var clickedColor=this.style.background;
 		if(clickedColor===pickedColor){
-			console.log("correct");
+			messageDisplay.textContent = "Correct";
+			changeColors(clickedColor);
+
 		}
 		else{
-			console.log("wrong");
+			this.style.background="#232323";
+			messageDisplay.textContent = "Try again";
 		}
 	});
+}
+function changeColors(color){
+	for(var i=0; i<squares.length; i++){
+		squares[i].style.background = color;
+	}
+}
+function pickColor(){
+	var randomColor = Math.floor(Math.random() * colors.length);
+	return colors[randomColor];
 }
