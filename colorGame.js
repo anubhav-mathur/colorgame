@@ -1,13 +1,50 @@
-var colors = generateRandomColors(6);
+var numColors=6;
+var colors = generateRandomColors(numColors);
 var squares = document.querySelectorAll(".square");
 var pickedColor=pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var reset = document.querySelector("#reset");
+var easyBtn = document.querySelector("#easyBtn")
+var hardBtn = document.querySelector("#hardBtn")
+
+easyBtn.addEventListener("click", function(){
+	easyBtn.classList.add("selected");
+	hardBtn.classList.remove("selected");
+	numColors=3;
+	colors = generateRandomColors(numColors);
+	pickedColor = pickColor();
+	colorDisplay.textContent=pickedColor;
+	for(var i=0; i<squares.length;i++){
+		if(colors[i]){
+			squares[i].style.background = colors[i];
+		}
+		else{
+			squares[i].style.display = "none";
+		}
+	}
+	h1.style.background="#232323";
+	reset.textContent="New Colors";
+});
+hardBtn.addEventListener("click", function(){
+	hardBtn.classList.add("selected");
+	easyBtn.classList.remove("selected");
+	numColors=6;
+	colors = generateRandomColors(numColors);
+	pickedColor = pickColor();
+	colorDisplay.textContent=pickedColor;
+	for(var i=0; i<squares.length;i++){
+		squares[i].style.background = colors[i];
+		squares[i].style.display = "block";
+	}
+	h1.style.background="#232323";
+	reset.textContent="New Colors";
+});
+
 
 reset.addEventListener("click", function(){
-	colors = generateRandomColors(6);
+	colors = generateRandomColors(numColors);
 	pickedColor=pickColor();
 	colorDisplay.textContent=pickedColor;
 	for(var i=0; i<squares.length; i++){
